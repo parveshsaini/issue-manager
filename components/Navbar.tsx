@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
+import ThemeToggler from './ui/theme-toggler'
 
 const Navbar = () => {
     const navItems= [
@@ -19,9 +20,10 @@ const Navbar = () => {
 
             {/* nav items */}
             <ul className='flex space-x-6'>
+                <ThemeToggler/>
                 {navItems.map((item)=> {
                     return <Link 
-                        className={`${item.link===pathName ? 'text-gray-900 font-bold': 'text-gray-700'} hover:text-gray-400 transition-colors`} 
+                        className={`${item.link===pathName ? 'font-bold underline underline-offset-4': ''}  hover:scale-110 transition-all `} 
                         href={item.link} 
                         key={item.label}>{item.label}</Link>
                 })}
