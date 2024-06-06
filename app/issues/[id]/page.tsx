@@ -1,9 +1,8 @@
 import prisma from '@/prisma/client'
 import { notFound } from 'next/navigation'
-import StatusBadge from '@/components/StatusBadge'
-import { Separator } from '@/components/ui/separator'
 import IssueDetails from '@/components/IssueDetails'
-import EditIssue from '@/components/EditIssue'
+import DeleteIssueButton from '@/components/DeleteIssueButton'
+import EditIssueButton from '@/components/EditIssue'
 
 interface Props {
     params: { id: string }
@@ -20,8 +19,11 @@ const IssueDetailsPage = async ({params}: Props) => {
     return (
         <div className='grid md:grid-cols-2 gap-x-6'>
             <IssueDetails issue={issue} />
-
-            <EditIssue issue={issue} />
+            
+            <div className='flex flex-col gap-3'>
+                <EditIssueButton issue={issue} />
+                <DeleteIssueButton issueId= {issue.id} />
+            </div>
         </div>
 
     )

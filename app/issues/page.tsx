@@ -17,7 +17,7 @@ import { HiQuestionMarkCircle } from "react-icons/hi";
 
 const Issues = async () => {
   const issues= await prisma.issue.findMany()
-  await new Promise(resolve=> setTimeout(resolve, 2000))
+  // await new Promise(resolve=> setTimeout(resolve, 2000))
 
   return (
     <div>

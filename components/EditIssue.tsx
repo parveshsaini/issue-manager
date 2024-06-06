@@ -3,12 +3,12 @@ import { Button } from './ui/button'
 import Link from 'next/link'
 import { Issue } from '@prisma/client'
 
-const EditIssue = ({issue}: {issue: Issue}) => {
+const EditIssueButton = ({issue}: {issue: Issue}) => {
   return (
     <div>
-      <Button variant={"secondary"}> <Link href={`/issues/${issue.id}/edit`}> Edit Issue </Link> </Button>
+      <Button variant={'outline'} className='bg-violet-500'> <Link href={`/issues/${issue.id}/edit`}> Edit Issue </Link> </Button>
     </div>
   )
 }
 
-export default EditIssue
+export default EditIssueButton

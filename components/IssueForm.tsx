@@ -20,8 +20,7 @@ const IssueForm = ( { issue }: { issue?: Issue }) => {
     const router = useRouter()
 
     const createIssue= async(data: IssueFormData)=>{
-        try {                  
-            router.push('/')
+        try {               
             toast.promise(
                 axios.post('/api/issues', data).then(()=> router.push('/')),
                  {
@@ -30,14 +29,15 @@ const IssueForm = ( { issue }: { issue?: Issue }) => {
                    error: <b>Could not save.</b>,
                  }
             );
+            router.refresh()
+
         } catch (error: any) {
             toast.error(error)
         }
     }
 
     const updateIssue= async(data: IssueFormData)=>{
-        try {                  
-            router.push('/')
+        try {  
             toast.promise(
                 axios.patch(`/api/issues/${issue?.id}/edit`, data).then(()=> router.push('/')),
                  {
@@ -46,6 +46,8 @@ const IssueForm = ( { issue }: { issue?: Issue }) => {
                    error: <b>Could not save.</b>,
                  }
             );
+            router.refresh()
+
         } catch (error: any) {
             toast.error(error)
         }
