@@ -17,7 +17,7 @@ export default function ThemeToggler() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none ">
-        {resolvedTheme === "light" ? <IoSunnySharp className="w-5 h-5 hover:scale-125 transition-all"/> : <FaRegMoon className="w-4 h-4 hover:scale-125 transition-all"/>}
+        {resolvedTheme === "light" ? <IoSunnySharp className=" flex items-center w-5 h-5 hover:scale-125 transition-all"/> : <FaRegMoon className="flex items-center w-4 h-4 hover:scale-125 transition-all"/>}
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
