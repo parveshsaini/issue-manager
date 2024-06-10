@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import AuthProvider from "@/components/providers/auth-provider";
-
+import QueryProvider from "@/components/providers/react-query-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <QueryProvider>
         <AuthProvider>
         <ThemeProvider
               attribute="class"
@@ -33,6 +34,7 @@ export default function RootLayout({
 
           </ThemeProvider>
           </AuthProvider>
+          </QueryProvider>
         </body>
           
     </html>
