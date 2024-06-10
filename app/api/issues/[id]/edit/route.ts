@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { issueSchema } from "@/types/issueValidation";
 import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/api/auth/[...nextauth]/options";
 
 interface Props {
     params: {id: string}
@@ -11,6 +13,9 @@ export const PATCH= async(req: NextRequest, {params}: Props)=>{
     // find issue
     //check if issue present
     //update the issue
+    const session= await getServerSession(authOptions)
+    if(!session)
+        return NextResponse.json({}, {status: 401})
 
     const body= await req.json();
 
