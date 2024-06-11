@@ -4,6 +4,7 @@ import Pagination from '@/components/Pagination'
 import { Button } from '@/components/ui/button'
 import prisma from '@/prisma/client'
 import { Status } from '@prisma/client'
+import { Metadata } from 'next'
 import Link from 'next/link'
 
 interface Props{
@@ -51,3 +52,8 @@ const Issues = async ({searchParams}: Props) => {
 }
 
 export default Issues
+
+export const metadata: Metadata= {
+  title: 'Issue Manager - Issues',
+  description: 'All listed Issues'
+}
