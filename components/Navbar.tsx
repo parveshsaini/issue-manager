@@ -47,7 +47,10 @@ const Navbar = () => {
                         <DropdownMenuTrigger className="outline-none">
 
                             <Avatar className='p-1 rounded-full'>
-                            <AvatarImage src={session.user!.image!} className='rounded-full'/>
+                            <AvatarImage 
+                              src={session.user!.image!} 
+                              className='rounded-full'
+                              referrerPolicy='no-referrer'/>
                             <AvatarFallback>?</AvatarFallback>
                             </Avatar>
 

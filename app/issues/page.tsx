@@ -1,23 +1,10 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import React from 'react'
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import prisma from '@/prisma/client'
-import StatusBadge from '@/components/StatusBadge'
-import { HiQuestionMarkCircle } from "react-icons/hi";
 import FilterIssue from '@/components/FilterIssue'
-import { Status } from '@prisma/client'
-import { skip } from 'node:test'
+import IssueTable from '@/components/IssueTable'
 import Pagination from '@/components/Pagination'
+import { Button } from '@/components/ui/button'
+import prisma from '@/prisma/client'
+import { Status } from '@prisma/client'
+import Link from 'next/link'
 
 interface Props{
   searchParams: {
@@ -49,37 +36,15 @@ const Issues = async ({searchParams}: Props) => {
 
   return (
     <div>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between mb-5'>
           <FilterIssue/>
-          <Button variant="secondary" className='mb-5'><Link href={"/issues/new"}>New Issue </Link></Button>
+          <Button variant="secondary" className=''><Link href={"/issues/new"}>New Issue </Link></Button>
         </div>
 
-        <Table className="">
-          <TableHeader>
-            <TableRow>
-              <TableHead>Issue</TableHead>
-              <TableHead className='hidden md:table-cell'>Status</TableHead>
-              <TableHead >Created</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {issues.map((issue) => (
-              <TableRow key={issue.id}>
-                <TableCell className="font-medium"> 
-
-                <Link href={`/issues/${issue.id}`}><div className='flex items-center gap-x-2 hover:underline'><HiQuestionMarkCircle/> {issue.title} </div>  </Link> 
-                <div className='block md:hidden'><StatusBadge status={issue.status}/></div>
-                
-                </TableCell>
-                <TableCell className='hidden md:table-cell'> <StatusBadge status={issue.status}/> </TableCell>
-                <TableCell >{issue.createdAt.toDateString()}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <IssueTable issues={issues}/>
+        
         <div className='flex justify-center mt-4'>
-        <Pagination currentPage={page} itemsCount={issueCount} pageSize={pageSize} />
-
+          <Pagination currentPage={page} itemsCount={issueCount} pageSize={pageSize} />
         </div>
     </div>
   )

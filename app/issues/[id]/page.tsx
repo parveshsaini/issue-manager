@@ -22,7 +22,7 @@ const IssueDetailsPage = async ({params}: Props) => {
         notFound()
 
     return (
-        <div className='grid md:grid-cols-2 gap-x-6'>
+        <div className='grid md:grid-cols-2 gap-x-6 gap-y-3'>
             <IssueDetails issue={issue} />
             
             {session && <div className='flex flex-col gap-3'>
